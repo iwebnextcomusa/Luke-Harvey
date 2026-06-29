@@ -1,0 +1,6 @@
+{
+  "name": "Luke Harvey - Musician Portal",
+  "description": "Premium Sedona-inspired official website and interactive AI assistant portal for musician Luke Harvey, designed by iWebNext.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
