@@ -1,10 +1,24 @@
-import { Play, Calendar, Mail } from "lucide-react";
+import { useState, useRef } from "react";
+import { Play, Calendar, Mail, Volume2, VolumeX } from "lucide-react";
+import heroImg from "../assets/images/luke_harvey_hero_1782764440399.jpg";
 
 interface HeroProps {
   onNavigate: (section: string) => void;
 }
 
+const HERO_VIDEO_URL = "https://nu4vmjwwlctw3mhe.public.blob.vercel-storage.com/Create_video_for_crafting_melodies_202608070420.mp4";
+
 export default function Hero({ onNavigate }: HeroProps) {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   const handleCtaClick = (sectionId: string) => {
     onNavigate(sectionId);
     const element = document.getElementById(sectionId);
@@ -18,19 +32,50 @@ export default function Hero({ onNavigate }: HeroProps) {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-sedona-dark pt-20"
     >
-      {/* Background Image with Fallback and Sedona Terracotta Overlay */}
+      {/* Background Video with Fallback Poster and Sedona Terracotta Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/src/assets/images/luke_harvey_hero_1782764440399.jpg"
-          alt="Luke Harvey Sedona Hero sunset"
-          className="w-full h-full object-cover scale-105 animate-[pulse_8s_infinite] opacity-60 md:opacity-75 transition-opacity duration-1000"
-          referrerPolicy="no-referrer"
-          id="hero-bg-img"
+        <video
+          ref={videoRef}
+          src={HERO_VIDEO_URL}
+          poster={heroImg || "/images/luke_harvey_hero_1782764440399.jpg"}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+          className="w-full h-full object-cover opacity-65 md:opacity-80 transition-opacity duration-1000"
+          id="hero-bg-video"
         />
         {/* Modern multi-layer gradient overlays to create a cohesive Sedona glow */}
         <div className="absolute inset-0 bg-gradient-to-t from-sedona-dark via-sedona-dark/75 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-sedona-dark/90 via-transparent to-sedona-dark/40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-sedona-clay/15 via-transparent to-sedona-dark/95 mix-blend-color-burn"></div>
+      </div>
+
+      {/* Audio Mute / Unmute Toggle Button */}
+      <div className="absolute bottom-6 right-6 z-20">
+        <button
+          onClick={toggleMute}
+          className="flex items-center space-x-2 px-3.5 py-2 bg-sedona-dark/80 hover:bg-sedona-charcoal text-sedona-sand border border-sedona-clay/30 hover:border-sedona-orange/50 rounded-full backdrop-blur-md shadow-lg transition-all duration-300 cursor-pointer group"
+          title={isMuted ? "Unmute video audio" : "Mute video audio"}
+          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+          id="hero-mute-toggle-btn"
+        >
+          {isMuted ? (
+            <>
+              <VolumeX className="w-4 h-4 text-sedona-orange animate-pulse" />
+              <span className="font-mono text-[10px] uppercase tracking-wider text-sedona-copper group-hover:text-sedona-sand">
+                Sound Off
+              </span>
+            </>
+          ) : (
+            <>
+              <Volume2 className="w-4 h-4 text-green-400" />
+              <span className="font-mono text-[10px] uppercase tracking-wider text-sedona-sand">
+                Sound On
+              </span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* Floating subtle desert elements / ambient particles container */}

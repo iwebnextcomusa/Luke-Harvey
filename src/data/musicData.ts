@@ -1,4 +1,7 @@
 import { Track, MusicianEvent, GalleryItem, VideoItem } from "../types";
+import albumCoverImg from "../assets/images/luke_harvey_album_1782764473132.jpg";
+import heroImg from "../assets/images/luke_harvey_hero_1782764440399.jpg";
+import profileImg from "../assets/images/luke_harvey_profile_1782764455085.jpg";
 
 export const TRACKS: Track[] = [
   {
@@ -11,7 +14,7 @@ export const TRACKS: Track[] = [
     type: "album",
     albumName: "Sedona Sessions",
     releaseYear: 2026,
-    coverUrl: "/src/assets/images/luke_harvey_album_1782764473132.jpg"
+    coverUrl: albumCoverImg || "/images/luke_harvey_album_1782764473132.jpg"
   },
   {
     id: "2",
@@ -23,7 +26,7 @@ export const TRACKS: Track[] = [
     type: "album",
     albumName: "Sedona Sessions",
     releaseYear: 2026,
-    coverUrl: "/src/assets/images/luke_harvey_album_1782764473132.jpg"
+    coverUrl: albumCoverImg || "/images/luke_harvey_album_1782764473132.jpg"
   },
   {
     id: "3",
@@ -35,7 +38,7 @@ export const TRACKS: Track[] = [
     type: "album",
     albumName: "Sedona Sessions",
     releaseYear: 2026,
-    coverUrl: "/src/assets/images/luke_harvey_album_1782764473132.jpg"
+    coverUrl: albumCoverImg || "/images/luke_harvey_album_1782764473132.jpg"
   },
   {
     id: "4",
@@ -157,13 +160,13 @@ export const EVENTS: MusicianEvent[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "g1",
-    url: "/src/assets/images/luke_harvey_hero_1782764440399.jpg",
+    url: heroImg || "/images/luke_harvey_hero_1782764440399.jpg",
     caption: "Performing live at Sedona Red Rock Amphitheater, sunset 2026",
     category: "live"
   },
   {
     id: "g2",
-    url: "/src/assets/images/luke_harvey_profile_1782764455085.jpg",
+    url: profileImg || "/images/luke_harvey_profile_1782764455085.jpg",
     caption: "Professional portrait session at Cathedral Rock, Sedona",
     category: "portrait"
   },

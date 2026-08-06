@@ -1,4 +1,5 @@
 import { Music4, Mic2, Sparkles, MapPin } from "lucide-react";
+import profileImg from "../assets/images/luke_harvey_profile_1782764455085.jpg";
 
 export default function AboutSection() {
   const coreValues = [
@@ -54,7 +55,7 @@ export default function AboutSection() {
               
               <div className="relative overflow-hidden rounded-lg bg-sedona-charcoal border border-sedona-orange/20 shadow-2xl">
                 <img
-                  src="/src/assets/images/luke_harvey_profile_1782764455085.jpg"
+                  src={profileImg || "/images/luke_harvey_profile_1782764455085.jpg"}
                   alt="Luke Harvey sitting in Sedona"
                   className="w-full h-auto object-cover max-h-[500px] transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
